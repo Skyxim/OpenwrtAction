@@ -1,5 +1,4 @@
 name: x86-openwrt
-
 on:
   schedule:
     - cron: 0 5 1 * * 
