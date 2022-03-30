@@ -29,7 +29,12 @@ jobs:
         run: |
           cd openwrt
           make -j$(($(nproc) + 1)) V=s
-          
+      - name: Organize files
+        id: organize
+        run: |
+          rm -rf ./artifact/
+          mkdir -p ./artifact/
+          mv openwrt/bin/targets/x86/64/* ./artifact/
       - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
