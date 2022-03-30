@@ -34,3 +34,4 @@ jobs:
         with:
           tag: ${{ github.ref }}
           files: openwrt/bin/targets/**/**
+          tag-name: release
