@@ -43,7 +43,10 @@ jobs:
         with:
           name: openwrt_x86
           path: ./artifact/
-
+      - name: zip
+        run: |
+          zip -q packages.zip packages/*
+          rm -rf packages
       - name: Create release
         id: create_release
         uses: ncipollo/release-action@v1.8.0
@@ -54,4 +57,4 @@ jobs:
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.TOKEN }}
-          artifacts: ./artifact/*.zip
+          artifacts: ./artifact/*
