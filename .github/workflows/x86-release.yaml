@@ -16,6 +16,9 @@ jobs:
       - name: fetch code
         run: |
           git clone https://github.com/coolsnowwolf/lede.git openwrt/
+          sudo chmod +x *.sh
+          cd openwrt/
+          bash ../luci.sh
       - name: copy config
         run: cp config openwrt/.config
       - name: prepare
