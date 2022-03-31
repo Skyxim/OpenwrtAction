@@ -32,9 +32,26 @@ jobs:
         run: |
           cd openwrt
           make -j$(($(nproc) + 1)) V=s
-      - name: release
-        uses: softprops/action-gh-release@v1
+      - name: Organize files
+        id: organize
+        run: |
+          rm -rf ./artifact/
+          mkdir -p ./artifact/
+          mv openwrt/bin/targets/x86/64/* ./artifact/
+      - name: Upload artifact
+        uses: actions/upload-artifact@main
         with:
-          tag: ${{ github.ref }}
-          files: openwrt/bin/targets/**/**
-          tag-name: release
+          name: openwrt_x86
+          path: ./artifact/
+
+      - name: Create release
+        id: create_release
+        uses: ncipollo/release-action@v1.8.0
+        with:
+          name: OpenWRT-X86
+          allowUpdates: true
+          tag: x86
+          commit: main
+          replacesArtifacts: true
+          token: ${{ secrets.TOKEN }}
+          artifacts: ./artifact/*.zip
