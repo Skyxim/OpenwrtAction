@@ -45,6 +45,7 @@ jobs:
           path: ./artifact/
       - name: zip
         run: |
+          cd ./artifact/
           zip -q packages.zip packages/*
           rm -rf packages
       - name: Create release
