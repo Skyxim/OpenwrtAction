@@ -56,4 +56,4 @@ rm -rf package/lean/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
 # OpenClash
 rm -rf  package/lean/luci-app-openclash
-git clone --single-branch --depth 1 -b dev https://github.com/vernesong/OpenClash.git package/lean/luci-app-openclash
+git clone --single-branch --depth 1 -b master https://github.com/vernesong/OpenClash.git package/lean/luci-app-openclash
