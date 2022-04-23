@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -15,10 +15,9 @@ jobs:
           sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
       - name: fetch code
         run: |
-          git clone https://github.com/coolsnowwolf/lede.git openwrt/
+          git clone https://github.com/immortalwrt/immortalwrt.git openwrt/
           sudo chmod +x *.sh
           cd openwrt/
-          bash ../luci.sh
       - name: copy config
         run: cp config openwrt/.config
       - name: prepare
