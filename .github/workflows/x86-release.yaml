@@ -26,7 +26,7 @@ jobs:
           cp ../config .config
           make defconfig
           cat .config
-          make -j8 download V=s
+          make -j$(($(nproc) + 1)) download V=s
       - name: build
         run: |
           cd openwrt
