@@ -23,8 +23,9 @@ jobs:
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          cp ../config .config
           make defconfig
-          cp config openwrt/.config
+          cat .config
           make -j8 download V=s
       - name: build
         run: |
