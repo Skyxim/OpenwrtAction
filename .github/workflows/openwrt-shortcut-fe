@@ -1,0 +1,60 @@
+name: x86-openwrt
+on:
+  schedule:
+    - cron: 0 5 1 * * 
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: fetch dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
+      - name: fetch code
+        run: |
+          git clone https://github.com/immortalwrt/immortalwrt.git openwrt/
+          sudo chmod +x *.sh
+          cd openwrt/
+      - name: prepare
+        run: |
+          cd openwrt
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+          cp ../config-shortcut-fe .config
+          make defconfig
+          cat .config
+          make -j$(($(nproc) + 1)) download V=s
+      - name: build
+        run: |
+          cd openwrt
+          make -j$(($(nproc) + 1)) V=s
+      - name: Organize files
+        id: organize
+        run: |
+          rm -rf ./artifact/
+          mkdir -p ./artifact/
+          mv openwrt/bin/targets/x86/64/* ./artifact/
+      - name: Upload artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: openwrt_x86
+          path: ./artifact/
+      - name: zip
+        run: |
+          cd ./artifact/
+          zip -q packages.zip packages/*
+          rm -rf packages
+      - name: Create release
+        id: create_release
+        uses: ncipollo/release-action@v1.8.0
+        with:
+          name: OpenWRT-X86-SHORTCUT-FE
+          allowUpdates: true
+          tag: x86
+          commit: main
+          replacesArtifacts: true
+          token: ${{ secrets.TOKEN }}
+          artifacts: ./artifact/*
