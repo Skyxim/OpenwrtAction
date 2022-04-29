@@ -1,4 +1,4 @@
-name: x86-openwrt
+name: x86-openwrt-shortcut-fe
 on:
   schedule:
     - cron: 0 5 1 * * 
