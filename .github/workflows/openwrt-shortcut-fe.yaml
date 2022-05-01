@@ -54,7 +54,7 @@ jobs:
           name: OpenWRT-X86-SHORTCUT-FE
           allowUpdates: true
           tag: x86-shortcut-fe
-          commit: shortcut-fe
+          commit: main
           replacesArtifacts: true
           token: ${{ secrets.TOKEN }}
           artifacts: ./artifact/*
