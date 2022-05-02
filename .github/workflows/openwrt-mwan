@@ -1,4 +1,4 @@
-name: x86-openwrt-shortcut-fe
+name: x86-openwrt-mwan
 on:
   schedule:
     - cron: 0 5 1 * * 
@@ -23,7 +23,7 @@ jobs:
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          cp ../config-shortcut-fe .config
+          cp ../config-mwan .config
           make defconfig
           cat .config
           make -j$(($(nproc) + 1)) download V=s
@@ -40,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
-          name: openwrt_x86_shortcut_fe
+          name: openwrt_x86_mwan
           path: ./artifact/
       - name: zip
         run: |
@@ -51,9 +51,9 @@ jobs:
         id: create_release
         uses: ncipollo/release-action@v1.8.0
         with:
-          name: OpenWRT-X86-SHORTCUT-FE
+          name: OpenWRT-X86-MWAN
           allowUpdates: true
-          tag: x86-shortcut-fe
+          tag: x86-MWAN
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.TOKEN }}
