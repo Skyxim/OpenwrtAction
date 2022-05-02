@@ -1,4 +1,4 @@
-name: x86-openwrt-mwan
+name:  x86-openwrt-mwan
 on:
   schedule:
     - cron: 0 5 1 * * 
