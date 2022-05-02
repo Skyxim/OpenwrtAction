@@ -23,7 +23,7 @@ CONFIG_HAVE_DOT_CONFIG=y
 # CONFIG_TARGET_pistachio is not set
 # CONFIG_TARGET_mvebu is not set
 # CONFIG_TARGET_kirkwood is not set
-# CONFIG_TARGET_mediatek is not set
+# CONFIG_TARGET_mediatek is not set 
 # CONFIG_TARGET_ramips is not set
 # CONFIG_TARGET_at91 is not set
 # CONFIG_TARGET_tegra is not set
@@ -136,25 +136,25 @@ CONFIG_DEFAULT_lm-sensors=y
 CONFIG_DEFAULT_logd=y
 CONFIG_DEFAULT_luci=y
 CONFIG_DEFAULT_luci-app-accesscontrol=y
-CONFIG_DEFAULT_luci-app-adbyby-plus=y
-CONFIG_DEFAULT_luci-app-arpbind=y
+CONFIG_DEFAULT_luci-app-adbyby-plus=n
+CONFIG_DEFAULT_luci-app-arpbind=n
 CONFIG_DEFAULT_luci-app-autoreboot=y
 CONFIG_DEFAULT_luci-app-ddns=y
 CONFIG_DEFAULT_luci-app-filetransfer=y
-CONFIG_DEFAULT_luci-app-ipsec-vpnd=y
-CONFIG_DEFAULT_luci-app-nlbwmon=y
+CONFIG_DEFAULT_luci-app-ipsec-vpnd=n
+CONFIG_DEFAULT_luci-app-nlbwmon=n
 CONFIG_DEFAULT_luci-app-ramfree=y
 CONFIG_DEFAULT_luci-app-ssr-plus=y
 CONFIG_DEFAULT_luci-app-ttyd=y
 CONFIG_DEFAULT_luci-app-turboacc=y
-CONFIG_DEFAULT_luci-app-unblockmusic=y
-CONFIG_DEFAULT_luci-app-upnp=y
+CONFIG_DEFAULT_luci-app-unblockmusic=n
+CONFIG_DEFAULT_luci-app-upnp=n
 CONFIG_DEFAULT_luci-app-vlmcsd=y
-CONFIG_DEFAULT_luci-app-vsftpd=y
-CONFIG_DEFAULT_luci-app-wireguard=y
-CONFIG_DEFAULT_luci-app-wol=y
-CONFIG_DEFAULT_luci-app-xlnetacc=y
-CONFIG_DEFAULT_luci-app-zerotier=y
+CONFIG_DEFAULT_luci-app-vsftpd=n
+CONFIG_DEFAULT_luci-app-wireguard=n
+CONFIG_DEFAULT_luci-app-wol=n
+CONFIG_DEFAULT_luci-app-xlnetacc=n
+CONFIG_DEFAULT_luci-app-zerotier=n
 CONFIG_DEFAULT_luci-newapi=y
 CONFIG_DEFAULT_luci-proto-bonding=y
 CONFIG_DEFAULT_mkf2fs=y
