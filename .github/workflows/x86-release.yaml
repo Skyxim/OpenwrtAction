@@ -17,6 +17,7 @@ jobs:
         run: |
           git clone https://github.com/immortalwrt/immortalwrt.git openwrt/
           sudo chmod +x *.sh
+          cp 500-backport-igc-5.15-driver.patch target/linux/x86/patches-5.4/
           cd openwrt/
       - name: prepare
         run: |
