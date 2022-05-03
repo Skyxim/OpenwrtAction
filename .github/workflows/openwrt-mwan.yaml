@@ -26,6 +26,7 @@ jobs:
           ../luci.sh
           cp ../config-mwan .config
           make defconfig
+          cp ../config-mwan .config
           cat .config
           make -j$(($(nproc) + 1)) download V=s
       - name: build
