@@ -1,4 +1,4 @@
-name:  x86-openwrt-mwan
+name:  immortalwrt
 on:
   schedule:
     - cron: 0 5 1 * * 
@@ -42,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
-          name: openwrt_x86_mwan
+          name: openwrt_x86_immortalwrt
           path: ./artifact/
       - name: zip
         run: |
@@ -53,9 +53,9 @@ jobs:
         id: create_release
         uses: ncipollo/release-action@v1.8.0
         with:
-          name: OpenWRT-X86-MWAN
+          name: OpenWRT-X86-IMMORTALWRT
           allowUpdates: true
-          tag: x86-MWAN
+          tag: x86-IMMORTALWRT
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.TOKEN }}
