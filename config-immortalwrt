@@ -442,7 +442,8 @@ CONFIG_PKG_FORTIFY_SOURCE_1=y
 CONFIG_PKG_RELRO_FULL=y
 # CONFIG_SELINUX is not set
 # end of Global build settings
-
+CONFIG_PACKAGE_kmod-nf-flow=y
+CONFIG_PACKAGE_kmod-ipt-offload=y
 # CONFIG_DEVEL is not set
 # CONFIG_BROKEN is not set
 CONFIG_BINARY_FOLDER=""
