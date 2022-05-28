@@ -33,6 +33,7 @@ jobs:
           make -j$(($(nproc) + 1)) download V=s
       - name: build
         run: |
+          su frost
           cd openwrt
           make -j$(($(nproc) + 1)) V=s
       - name: Organize files
