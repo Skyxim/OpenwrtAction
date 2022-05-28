@@ -12,6 +12,7 @@ jobs:
       - name: fetch dependencies
         run: |
           sudo apt update -y
+          sudo apt upgrade
           sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils\ 
             bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar\ 
             flex gawk gettext gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf\ 
