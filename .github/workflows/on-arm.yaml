@@ -31,7 +31,7 @@ jobs:
       - name: build
         run: |
           cd openwrt
-          make -j$(($(nproc) + 1)) V=s
+          make -j1 V=s
       - name: Organize files
         id: organize
         run: |
