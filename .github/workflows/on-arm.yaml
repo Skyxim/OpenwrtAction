@@ -6,25 +6,24 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    env:
+      FORCE_UNSAFE_CONFIGURE: 1
     steps:
       - name: Checkout
         uses: actions/checkout@main
       - name: fetch dependencies
         run: |
-          su frost
           sudo apt update -y
           sudo apt upgrade -y
           sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar      flex gawk gettext gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf    git gperf haveged help2man intltool libc6-dev-arm64-cross libelf-dev libglib2.0-dev            libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev            libreadline-dev libssl-dev libtool lrzsz            mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf            python2.7 python3 python3-pip qemu-utils rsync scons squashfs-tools subversion swig          texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev golang-go
       - name: fetch code
         run: |
-          su frost
           git clone https://github.com/coolsnowwolf/lede openwrt/
           sudo chmod +x *.sh
           cd openwrt/
           ../luci.sh
       - name: prepare
         run: |
-          su frost
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -33,13 +32,11 @@ jobs:
           make -j$(($(nproc) + 1)) download V=s
       - name: build
         run: |
-          su frost
           cd openwrt
           make -j$(($(nproc) + 1)) V=s
       - name: Organize files
         id: organize
         run: |
-          su frost
           rm -rf ./artifact/
           mkdir -p ./artifact/
           mv openwrt/bin/targets/x86/64/* ./artifact/
